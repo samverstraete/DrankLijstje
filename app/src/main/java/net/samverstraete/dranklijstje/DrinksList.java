@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import net.samverstraete.dranklijstje.objects.DrinkArray;
 import net.samverstraete.dranklijstje.objects.DrinkItem;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.util.Log;

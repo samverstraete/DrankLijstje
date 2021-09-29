@@ -40,9 +40,13 @@ public class DrinkSelAdapter extends BaseAdapter{
 		TextView tv = v.findViewById(R.id.icon_text);
 		tv.setText(drinks.get(position).name);
 		ImageView iv = v.findViewById(R.id.icon_image);
+
 		try {
-			iv.setImageResource(drinks.get(position).iconpos);
-		} catch(Resources.NotFoundException nfe) {
+			iv.setImageResource(mContext.getResources().getIdentifier(
+					drinks.get(position).icon,
+					"drawable",
+					null));
+		} catch(NullPointerException | Resources.NotFoundException nfe) {
 			iv.setImageResource(R.drawable.klj);
 		}
 		TextView q = v.findViewById(R.id.icon_quant);

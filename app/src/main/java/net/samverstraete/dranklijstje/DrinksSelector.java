@@ -1,5 +1,35 @@
 package net.samverstraete.dranklijstje;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.os.Bundle;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.TextView;
+
+import net.samverstraete.dranklijstje.objects.DrinkArray;
+import net.samverstraete.dranklijstje.objects.DrinkItem;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -8,32 +38,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.text.DecimalFormat;
-import net.samverstraete.dranklijstje.objects.DrinkArray;
-import net.samverstraete.dranklijstje.objects.DrinkItem;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.TextView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class DrinksSelector  extends AppCompatActivity {
-	private static final int LIJST_REQUEST_CODE = 0;
 	GridView gridview;
 	DrinkArray drinks;
 
@@ -95,7 +101,10 @@ public class DrinksSelector  extends AppCompatActivity {
 
 		DrinkArray drinklist = new DrinkArray();
 		for(int i = 0; i<drinknames.length;i++){
-			DrinkItem di = new DrinkItem(drinknames[i],drinklogos.getResourceId(i, 0),drinkprices.getFloat(i,0.80f),0);
+			DrinkItem di = new DrinkItem(
+					drinknames[i],
+					res.getResourceName(drinklogos.getResourceId(i, R.drawable.klj)),
+					drinkprices.getFloat(i,0.80f),0);
 			drinklist.add(i,di);
 		}
 
@@ -174,8 +183,17 @@ public class DrinksSelector  extends AppCompatActivity {
 		Bundle b = new Bundle();
 		b.putParcelable("drinks", drinks);
 		myIntent.putExtras(b);
-		startActivityForResult(myIntent, LIJST_REQUEST_CODE);
+		drinksListResultLauncher.launch(myIntent);
 	}
+
+	ActivityResultLauncher<Intent> drinksListResultLauncher = registerForActivityResult(
+			new ActivityResultContracts.StartActivityForResult(),
+			result -> {
+				if (result.getResultCode() == Activity.RESULT_OK) {
+					for (int i = 0; i < drinks.size(); i++) drinks.get(i).quant = 0;
+					gridview.invalidateViews();
+				}
+			});
 
 	protected void updateItemValue(int position, View v) {
 		ViewGroup vg = (ViewGroup) v;
@@ -183,18 +201,6 @@ public class DrinksSelector  extends AppCompatActivity {
 		TextView q = vg.getChildAt(0).findViewById(R.id.icon_quant);
 		if(drinks.get(position).quant==0)q.setText("");
 		else q.setText(String.valueOf(drinks.get(position).quant));
-	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-
-		if (requestCode == LIJST_REQUEST_CODE) {
-			if (resultCode == RESULT_OK) {
-				for (int i = 0; i < drinks.size(); i++) drinks.get(i).quant = 0;
-				gridview.invalidateViews();
-			}
-		}
 	}
 
 	@Override
@@ -231,7 +237,7 @@ public class DrinksSelector  extends AppCompatActivity {
 						String localePrice = price.getText().toString().replace(",",".");
 						drinks.add(new DrinkItem(
 								name.getText().toString(),
-								R.drawable.klj,
+								"R.drawable.klj",
 								Float.parseFloat(localePrice),
 								0));
 						gridview.invalidateViews();

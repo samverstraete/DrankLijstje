@@ -7,11 +7,11 @@ public class DrinkItem implements Serializable{
 	public String name;
 	public float price;
 	public transient int quant;
-	public int iconpos; 
-	public DrinkItem(String name, int icon, float price, int quant) {
+	public String icon;
+	public DrinkItem(String name, String icon, float price, int quant) {
 		this.name = name;
 		this.price = price;
 		this.quant = quant;
-		this.iconpos = icon;
+		this.icon = icon;
 	}
 }

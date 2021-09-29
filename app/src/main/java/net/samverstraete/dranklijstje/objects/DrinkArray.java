@@ -22,7 +22,7 @@ public class DrinkArray extends ArrayList<DrinkItem> implements Parcelable{
         for (int i = 0; i < size; i++) {
                 DrinkItem c = this.get(i);
         		dest.writeString(c.name);
-        		dest.writeInt(c.iconpos);
+        		dest.writeString(c.icon);
         		dest.writeFloat(c.price);
         		dest.writeInt(c.quant);
         }
@@ -33,7 +33,7 @@ public class DrinkArray extends ArrayList<DrinkItem> implements Parcelable{
         //First we have to read the list size
         int size = in.readInt();
         for (int i = 0; i < size; i++) {
-             DrinkItem c = new DrinkItem(in.readString(),in.readInt(),in.readFloat(),in.readInt());
+             DrinkItem c = new DrinkItem(in.readString(),in.readString(),in.readFloat(),in.readInt());
                 this.add(c);
         }
 	}
