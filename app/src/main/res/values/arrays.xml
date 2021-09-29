@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="KLJDrankNamen">
+        <item>Pintje</item>
+        <item>Cola</item>
+        <item>Fanta</item>
+        <item>Ice Tea</item>
+        <item>Water</item>
+        <item>Spa</item>
+        <item>Fruitsap</item>
+        <item>Kriek</item>
+        <item>Chips zout</item>
+        <item>Chips paprika</item>
+        <item>Chips pickels</item>
+        <item>Chips peper en zout</item>
+        <item>Grills</item>
+        <item>Andere €0,8</item>
+        <item>Andere €1</item>
+        <item>Andere €1,6</item>
+    </string-array>
+    <array name="KLJDrankLogos">
+        <item>@drawable/pint</item>
+        <item>@drawable/coca_cola</item>
+        <item>@drawable/fanta</item>
+        <item>@drawable/icetea</item>
+        <item>@drawable/water</item>
+        <item>@drawable/spa</item>
+        <item>@drawable/ace</item>
+        <item>@drawable/kriek</item>
+        <item>@drawable/zout</item>
+        <item>@drawable/paprika</item>
+        <item>@drawable/pickles</item>
+        <item>@drawable/pepernzout</item>
+        <item>@drawable/grills</item>
+        <item>@drawable/klj</item>
+        <item>@drawable/klj</item>
+        <item>@drawable/klj</item>
+    </array>
+	<array name="KLJDrankPrijzen">
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.00</item>
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.80</item>
+		<item>0.80</item>
+        <item>1.00</item>
+        <item>1.60</item>
+	</array>
+</resources>

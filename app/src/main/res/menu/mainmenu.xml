@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<group >
+		<item
+			android:id="@+id/menulist"
+			android:icon="@drawable/ic_menu_view"
+			android:title="@string/lijst" />
+		<item
+			android:id="@+id/menuclear"
+			android:icon="@drawable/ic_menu_delete"
+			android:title="@string/alles_wissen" />
+	</group>
+	<group >
+		<item
+			android:id="@+id/menutoevoegen"
+			android:icon="@drawable/ic_menu_edit"
+			android:title="@string/toevoegen" />
+		<item
+			android:id="@+id/menufullreset"
+			android:icon="@drawable/ic_menu_settings"
+			android:title="@string/listreset" />
+	</group>
+</menu>

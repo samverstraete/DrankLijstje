@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dranklijstje</string>
+    <string name="app_descr">Dit programma helpt een bestelling op te nemen maakt er een lijst van.</string>
+    <string name="totaal">Totaal</string>
+    <string name="bestelling">Bestelling</string>
+    <string name="aantal">Aantal</string>
+    <string name="alles_wissen">Leegmaken</string>
+    <string name="toevoegen">Toevoegen...</string>
+    <string name="lijst">Lijst maken</string>
+    <string name="verminder">Verminder</string>
+    <string name="verander">Verander…</string>
+    <string name="verwijder">Verwijder</string>
+    <string name="listreset">Lijst herinstellen</string>
+    <string name="annuleren">Annuleren</string>
+    <string name="opslaan">Opslaan</string>
+    <string name="eur">EUR</string>
+    <string name="prijs">Prijs</string>
+    <string name="naam">Naam</string>
+    <string name="bevestiglistreset">Hiermee worden alle wijzigingen in de lijst ongedaan gemaakt!</string>
+    <string name="ok">OK</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+	<GridView
+		android:id="@+id/gridview"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:columnWidth="80dp"
+		android:gravity="center"
+		android:horizontalSpacing="10dp"
+		android:numColumns="auto_fit"
+		android:padding="10dp"
+		android:scrollingCache="true"
+		android:stretchMode="spacingWidth"
+		android:verticalSpacing="10dp" />
+
+	<Button
+		android:id="@+id/btnMakeList"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/lijst" />
+</LinearLayout>
