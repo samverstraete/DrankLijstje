@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
@@ -149,7 +146,9 @@ public class DrinksSelector  extends AppCompatActivity {
 					.setPositiveButton(R.string.opslaan, (dialog, id) -> {
 						drinks.get(info.position).name = name.getText().toString();
 						String localePrice = price.getText().toString().replace(",",".");
-						drinks.get(info.position).price = Float.parseFloat(localePrice);
+						try {
+							drinks.get(info.position).price = Float.parseFloat(localePrice);
+						} catch (NumberFormatException ignored) {}
 						gridview.invalidateViews();
 					})
 					.setNegativeButton(R.string.annuleren, (dialog, id) -> {});
@@ -235,10 +234,14 @@ public class DrinksSelector  extends AppCompatActivity {
 					.setTitle(R.string.toevoegen)
 					.setPositiveButton(R.string.opslaan, (dialog, id) -> {
 						String localePrice = price.getText().toString().replace(",",".");
+						float newprice = 0f;
+						try {
+							newprice = Float.parseFloat(localePrice);
+						} catch (NumberFormatException ignored) {}
 						drinks.add(new DrinkItem(
 								name.getText().toString(),
-								"R.drawable.klj",
-								Float.parseFloat(localePrice),
+								this.getResources().getResourceName(R.drawable.klj),
+								newprice,
 								0));
 						gridview.invalidateViews();
 					})

@@ -6,7 +6,7 @@ android {
         applicationId "net.samverstraete.dranklijstje"
         minSdkVersion 18
         targetSdkVersion 30
-        versionCode 4
+        versionCode 7
         versionName "1.2"
         resConfigs "en", "nl"
     }

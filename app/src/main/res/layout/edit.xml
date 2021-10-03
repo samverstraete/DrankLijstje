@@ -11,9 +11,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/naam"
-        android:inputType="textPersonName"
-        android:textSize="20sp"
-        android:autofillHints="" />
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColor="#dddddd"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,11 +26,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:autofillHints=""
             android:digits="0123456789,."
             android:ems="10"
             android:hint="@string/prijs"
+            android:importantForAutofill="no"
             android:inputType="numberDecimal"
+            android:textColor="#dddddd"
             android:textSize="20sp" />
 
         <TextView
@@ -41,6 +43,7 @@
             android:singleLine="true"
             android:text="@string/eur"
             android:textAlignment="center"
+            android:textColor="#dddddd"
             android:textSize="20sp" />
     </LinearLayout>
 
